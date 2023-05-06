@@ -1,0 +1,24 @@
+{% assign size-guide-table-inputs = block.settings.string_size_chart | split: '*' %}
+
+<table>
+  <thead>
+    <tr>
+      <th>{{ size-guide-table-inputs[0] }}</th>
+      <th>{{ size-guide-table-inputs[1] }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ size-guide-table-inputs[2] }}</td>
+      <td>{{ size-guide-table-inputs[3] }}</td>
+    </tr>
+    <tr>
+      <td>{{ size-guide-table-inputs[4] }}</td>
+      <td>{{ size-guide-table-inputs[5] }}</td>
+    </tr>
+    <tr>
+      <td>{{ size-guide-table-inputs[6] }}</td>
+      <td>{{ size-guide-table-inputs[7] }}</td>
+    </tr>
+  </tbody>
+</table>

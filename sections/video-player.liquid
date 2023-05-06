@@ -1,0 +1,48 @@
+{{ 'video-player.css' | asset_url | stylesheet_tag }}
+
+<div class="main-container--video-player">
+  <div class="video-container--video-player">
+    <iframe 
+      title="{{ section.settings.heading }}"
+      src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}?background=1" 
+      allow="autoplay; encrypted-media" allowfullscreen title="{{ section.settings.description | escape }}" 
+      data-video-player   
+      frameborder="0">
+    </iframe>
+    <button data-video-pause-or-play class="play-or-pause-button--video-player">
+      {% render 'pause-svg' %}
+      {% render 'play-svg' %}
+    </button>
+  </div>
+</div>
+
+<script src="{{ 'video-player.js' | asset_url }}" defer="defer" type="module"></script>
+
+{% schema %}
+  {
+    "name": "video-player",
+    "tag": "section",
+    "class": "video-player-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "default": "Video",
+        "label": "Short description of video for visually-impared users"
+      },
+      {
+        "type": "video_url",
+        "id": "video_url",
+        "accept": [
+          "vimeo"
+        ],
+        "label": "Video URL"
+      }
+    ],
+    "presets": [
+      {
+        "name": "video-player"
+      }
+    ]
+  }
+  {% endschema %}

@@ -1,0 +1,140 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "c8d41460-6443-488b-8590-74ada0317829": {
+          "type": "size_guide",
+          "settings": {
+            "button": "Size Guide",
+            "string_size_chart": "",
+            "use_metafields": false,
+            "header_column_1": "",
+            "input1_column1": "",
+            "input2_column1": "",
+            "input3_column1": "",
+            "header_column_2": "",
+            "input1_column2": "",
+            "input2_column2": "",
+            "input3_column2": ""
+          }
+        },
+        "8a0c4e5d-0f0f-470c-9659-781192fed526": {
+          "type": "tab",
+          "settings": {
+            "heading": "Materials",
+            "content": "<p>Leather and cotton<\/p>"
+          }
+        },
+        "bfd191a0-9b6f-40d1-85ac-fd3aedec5b71": {
+          "type": "tab",
+          "settings": {
+            "heading": "Care Instructions",
+            "content": "<p>Spot clean with a damp cloth<\/p>"
+          }
+        },
+        "344b0e62-e9f8-4ff5-b571-e8a32ff70805": {
+          "type": "tab",
+          "settings": {
+            "heading": "Shipping and Returns",
+            "content": "<ul><li>Free shipping over $100<\/li><li>Returns within 30 days<\/li><\/ul><p><\/p>"
+          }
+        },
+        "f023bfd6-f754-44ef-8a0a-1eb91a5a4f78": {
+          "type": "carousel",
+          "settings": {
+            "collection": "featured-products"
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "price",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "description",
+        "c8d41460-6443-488b-8590-74ada0317829",
+        "8a0c4e5d-0f0f-470c-9659-781192fed526",
+        "bfd191a0-9b6f-40d1-85ac-fd3aedec5b71",
+        "344b0e62-e9f8-4ff5-b571-e8a32ff70805",
+        "f023bfd6-f754-44ef-8a0a-1eb91a5a4f78",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "media_position": "left",
+        "gallery_layout": "stacked",
+        "media_size": "large",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-products"
+  ]
+}

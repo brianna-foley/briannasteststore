@@ -1,0 +1,35 @@
+{% assign tabs = section.blocks | where: "type", "tab" %}
+{% if tabs.size > 0 %}
+  <tab-menu class="tab-menu">
+    {% comment %} add aria-orientation? vertical or horizontal {% endcomment %}
+    <ul
+      role="tablist"
+      class="tab-menu--list"
+      data-tm-list>
+      {% for block in tabs %}
+        <li
+          role="presentation"
+          class="tab-menu--list-item"
+          data-tm-list-item>
+          <a
+            role="tab"
+            href="javascript:void(0)"
+            class="tab-menu--link"
+            id="Tab-{{ block.id }}"
+            data-tm-link="Panel-{{ block.id }}">{{ block.settings.heading }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+
+    {% for block in tabs %}
+      <section
+        role="tabpanel"
+        class="tab-menu--content"
+        aria-labelledby="Tab-{{ block.id }}"
+        id="Panel-{{ block.id }}"
+        tabindex="0"
+        data-tm-content>{{ block.settings.content }}</section>
+    {% endfor %}
+
+  </tab-menu>
+{% endif %}

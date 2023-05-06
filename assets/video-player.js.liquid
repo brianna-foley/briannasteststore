@@ -1,0 +1,18 @@
+import { toggleClass } from '{{ 'utils.js' | asset_url }}'
+
+const backgroundVideo = document.querySelector('[data-video-player]')
+const backgroundVideoPlayOrPauseButton = document.querySelector('[data-video-pause-or-play]')
+const playSVG = document.querySelector('data-play-svg')
+const pauseSVG = document.querySelector('data-pause-svg')
+
+const postMessageToVideo = (video, action) => video.contentWindow.postMessage(JSON.stringify(action), '*')
+
+const pauseOrPlayVideo = (video) => {
+  const dataPause = { method: 'pause' }
+  const dataPlay = { method: 'play' }
+  video.classList.contains('paused') ? postMessageToVideo(video, dataPlay) : postMessageToVideo(video, dataPause)
+}
+
+backgroundVideoPlayOrPauseButton.addEventListener('click', () => { pauseOrPlayVideo(backgroundVideo) })
+backgroundVideoPlayOrPauseButton.addEventListener('click', () => { toggleClass(backgroundVideo, 'paused') })
+backgroundVideoPlayOrPauseButton.addEventListener('click', () => { toggleClass(backgroundVideoPlayOrPauseButton, 'paused') })

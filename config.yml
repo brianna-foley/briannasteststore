@@ -1,0 +1,13 @@
+development:
+  password: shptka_7bc49fd9fa7b8f305a8ccbd217561498
+  theme_id: "149223932206"
+  store: briannas-test-store.myshopify.com
+  ignores:
+    - .themeignore
+
+production:
+  password: shptka_7bc49fd9fa7b8f305a8ccbd217561498
+  theme_id: "149223932206"
+  store: briannas-test-store.myshopify.com
+  ignores:
+    - .themeignore
