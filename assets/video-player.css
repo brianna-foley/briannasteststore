@@ -2,6 +2,8 @@
   width: auto;
   text-align: center;
   margin: 20px 0;
+  background-color: #E6E8E6;
+  padding: 10px;
 }
 
 .video-container--video-player {
@@ -9,7 +11,8 @@
   width: 350px;
   margin: auto;
   position: relative;
-  background: gainsboro;
+  background: #CED0CE;
+  border-radius: 5px;
 }
 
 .video-container--video-player iframe {
@@ -55,3 +58,29 @@
 .play-or-pause-button--video-player.paused > [data-pause-svg] {
   display: none;
 } 
+
+.text-container--video-player {
+  color: #454545;
+}
+
+.heading--video-player {
+  font-size: 2.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .main-container--video-player {
+    display: flex;
+  }
+  .text-container--video-player {
+    width: 50%;
+    margin: auto;
+    text-align: left;
+    font-size: 2rem;
+  }
+  .heading--video-player {
+    font-size: 3.5rem;
+  }
+  .description--video-player {
+    font-size: 2rem;
+  }
+}

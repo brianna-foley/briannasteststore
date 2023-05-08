@@ -1,6 +1,17 @@
 {{ 'video-player.css' | asset_url | stylesheet_tag }}
 
 <div class="main-container--video-player">
+  <div class="text-container--video-player">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'text' %}
+          <div>
+            <h3 class="heading--video-player">{{ block.settings.heading }}</h3>
+            <p class="description--video-player">{{ block.settings.description }}</p>
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
   <div class="video-container--video-player">
     <iframe 
       title="{{ section.settings.heading }}"
@@ -37,6 +48,24 @@
           "vimeo"
         ],
         "label": "Video URL"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Description",
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading for video"
+          },
+          {
+            "type": "text",
+            "id": "description",
+            "label": "Description for video"
+          }
+        ]
       }
     ],
     "presets": [
