@@ -3,7 +3,6 @@
   class="page-width section-{{ section.id }}-padding"
   data-section="{{ section.id }}"
 >
-  {{ 'color-swatch.css' | asset_url | stylesheet_tag }}
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
   {{ 'component-rte.css' | asset_url | stylesheet_tag }}
@@ -377,7 +376,7 @@
                     {{ block.shopify_attributes }}
                   >
                     {%- for option in product.options_with_values -%}
-                      <fieldset class="js product-form__input product-form__input--color-swatch">
+                      <fieldset class="js product-form__input">
                         <legend class="form__label">{{ option.name }}</legend>
                         {%- for value in option.values -%}
                           <input
@@ -389,14 +388,9 @@
                             {% if option.selected_value == value %}
                               checked
                             {% endif %}
-                            class="input-color-swatch"
                           >
-                          <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" {% if option.name == "Color" %} style="background-color: {{ value }};" class="color-swatch" data-color-swatch{% endif %}>
-                            {% if option.name == "Color" %}
-                              <div class="visually-hidden color-swatch-name" data-color-swatch-name>{{ value }}</div>
-                            {% else %}
-                              {{ value }}
-                            {% endif %}
+                          <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                            {{ value }}
                           </label>
                         {%- endfor -%}
                       </fieldset>
@@ -1070,7 +1064,6 @@
 <script src="{{ 'glide.js' | asset_url }}" defer></script>
 <script src="{{ 'cross-sell-carousel.js' | asset_url }}" defer></script>
 <script src="{{ 'product-images-slider.js' | asset_url }}" defer></script>
-{{ 'color-swatch.js' | asset_url | script_tag }}
 
 {% schema %}
 {
