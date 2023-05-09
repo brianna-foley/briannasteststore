@@ -1,0 +1,49 @@
+<product-images-slider>
+  <div class="product-images__carousel glide" data-glide-product-images>
+    <div class="glide__track glide__track--product-images" data-glide-el="track">
+      <ul class="glide__slides glide__slides--product-images">
+        {% for image in product.images %}
+          <li class="glide__slide glide__slide--product-images">
+            <div>
+              <img
+                src="{{ image | image_url: width: "450x" }}"
+                loading="lazy"
+                alt="{{ image.alt }}"
+                class="image--product-slider">
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="glide__bullets" data-glide-el="controls[nav]">
+      {% for image in product.images %}
+        <button class="glide__bullet" data-glide-dir="={{ image.position | minus: 1 }}"></button>
+      {% endfor %}
+    </div>
+    <div class="glide__arrows" data-glide-el="controls">
+      <button
+        class="glide__arrow glide__arrow--left product-images-arrow--left"
+        data-glide-dir="<">prev</button>
+                       <button class="
+        glide__arrow
+        glide__arrow--right
+        product-images-arrow--right" data-glide-dir=">">next</button>
+    </div>
+  </div>
+  <div class="glide glide--thumbnails" data-glide-thumbnails>
+    <div class="glide__track glide__track--thumbnails" data-glide-el="track">
+      <ul class="glide__slides glide__slides--thumbnails" data-glide-thumbnail-slides="{{ product.images | size }}">
+        {% for image in product.images %}
+          <li class="glide__slide glide__slide--thumbnails" data-thumbnail-index="{{ forloop.index0 }}">
+            <img
+              src="{{ image | image_url: width: "120x"}}"
+              loading="lazy"
+              alt="{{ image.alt }}"
+              class="image--thumbnails"
+              data-thumbnail-image>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</product-images-slider>
