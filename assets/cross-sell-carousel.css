@@ -8,6 +8,7 @@
   text-overflow: ellipsis;
   word-wrap: break-word;
   overflow: hidden;
+  min-height: 57.6px;
   max-height: 3.6em;
   line-height: 1.8em;
   padding: 0 15px;
@@ -47,4 +48,3 @@
   width: 100%;
   height: auto;
 }
-
