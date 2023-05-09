@@ -3,6 +3,9 @@
   class="page-width section-{{ section.id }}-padding"
   data-section="{{ section.id }}"
 >
+  {{ 'glide.core.css' | asset_url | stylesheet_tag }}
+  {{ 'glide.theme.css' | asset_url | stylesheet_tag }}
+  {{ 'product-images-slider.css' | asset_url | stylesheet_tag }}
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
@@ -57,7 +60,11 @@
 
   <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
     <div class="grid__item product__media-wrapper{% if section.settings.media_position == 'right' %} medium-hide large-up-hide{% endif %}">
+      {% if product.images.size == 1  %}
       {% render 'product-media-gallery', variant_images: variant_images %}
+      {% elsif product.images.size >= 2 %}
+      {% render 'product-images-slider' %}
+      {% endif %}
     </div>
     <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}">
       <product-info
@@ -568,6 +575,8 @@
     }
   </script>
 </section>
+<script src="{{ 'glide.js' | asset_url }}" defer></script>
+<script src="{{ 'product-images-slider.js' | asset_url }}" defer></script>
 
 {% schema %}
 {
