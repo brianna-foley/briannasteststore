@@ -5,6 +5,7 @@
 >
   {{ 'glide.core.css' | asset_url | stylesheet_tag }}
   {{ 'glide.theme.css' | asset_url | stylesheet_tag }}
+  {{ 'cross-sell-carousel.css' | asset_url | stylesheet_tag }}
   {{ 'product-images-slider.css' | asset_url | stylesheet_tag }}
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
@@ -174,6 +175,84 @@
                   {{ product.description }}
                 </div>
               {%- endif -%}
+            {%- when 'carousel' -%}
+              <cross-sell-carousel>
+                <div class="glide" data-glide-cross-sell>
+                  <div class="glide__track glide__track--cross-sell" data-glide-el="track">
+                    <ul class="glide__slides">
+                      {% for _product in collections[block.settings.collection].products %}
+                        {% unless _product.id == product.id %}
+                        <li class="glide__slide">
+                          <div class="card card--cross-sell">
+                            <img src="{{ _product.featured_image | img_url: '500x' }}"  alt="{{ _product.title }}" loading="lazy" width="{{ _product.featured_image.width }}" height="{{ _product.featured_image.height }}" class="cross-sell-img"/>
+                            <p class="cross-sell-product-title">{{ _product.title }}</p>
+                            <div {{ block.shopify_attributes }}>
+                              {%- if _product != blank -%}
+                                <product-form class="product-form">
+                                  <div class="product-form__error-message-wrapper" role="alert" hidden>
+                                   {% render 'svg-product-form-error' %}
+                                     <span class="product-form__error-message"></span>
+                                  </div>
+                                  {%- form 'product', _product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                                    <input
+                                      type="hidden"
+                                      name="id"
+                                      value="{{ _product.selected_or_first_available_variant.id }}"
+                                      disabled
+                                    >
+                                    <div class="product-form__buttons cross-sell-button-container">
+                                      <button
+                                        type="submit"
+                                        name="add"
+                                        class="product-form__submit button button--full-width button--primary cross-sell-form-button"
+                                        class="product-form__submit button button--full-width button--primary cross-sell-form-button"
+                                        {% if _product.selected_or_first_available_variant.available == false %}
+                                        disabled
+                                        {% endif %}>
+                                        <span>
+                                          {%- if _product.selected_or_first_available_variant.available -%}
+                                            {{ 'products.product.add_to_cart' | t }}
+                                          {%- else -%}
+                                            {{ 'products.product.sold_out' | t }}
+                                          {%- endif -%}
+                                        </span>
+                                        <div class="loading-overlay__spinner hidden">
+                                          {% render 'svg-loading-overlay-spinner' %}
+                                        </div>
+                                      </button>
+                                    </div>
+                                  {%- endform -%}
+                                </product-form>
+                              {%- else -%}
+                                <div class="product-form">
+                                  <div class="product-form__buttons form cross-sell-button-container">
+                                    <button
+                                      type="submit"
+                                      name="add"
+                                      class="product-form__submit button button--full-width button--primary cross-sell-form-button"
+                                      class="product-form__submit button button--full-width button--primary cross-sell-form-button"
+                                      disabled
+                                    >
+                                     {{ 'products.product.sold_out' | t }}
+                                    </button>
+                                  </div>
+                                </div>
+                              {%- endif -%}
+                            </div>
+                          </div>
+                        </li>
+                        {% endunless %}
+                      {% endfor %}
+                    </ul>
+                  </div>
+                  <div class="glide__arrows" data-glide-el="controls">
+                        <button class="glide__arrow glide__arrow--left cross-sell-arrow--left" data-glide-dir="<"><</button>
+                        <button class="glide__arrow glide__arrow--right cross-sell-arrow--right" data-glide-dir=">">></button>
+                        <button class="glide__arrow glide__arrow--left cross-sell-arrow--left" data-glide-dir="<"><</button>
+                        <button class="glide__arrow glide__arrow--right cross-sell-arrow--right" data-glide-dir=">">></button>
+                  </div>
+                </div>
+              </cross-sell-carousel>
             {%- when 'sku' -%}
               <p
                 class="product__sku no-js-hidden{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
@@ -577,6 +656,7 @@
 </section>
 <script src="{{ 'glide.js' | asset_url }}" defer></script>
 <script src="{{ 'product-images-slider.js' | asset_url }}" defer></script>
+<script src="{{ 'cross-sell-carousel.js' | asset_url }}" defer></script>
 
 {% schema %}
 {
@@ -752,6 +832,17 @@
       "type": "description",
       "name": "t:sections.main-product.blocks.description.name",
       "limit": 1
+    },
+    {
+      "type": "carousel",
+      "name": "Cross-Sell Carousel",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
     },
     {
       "type": "share",
