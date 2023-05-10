@@ -1,6 +1,10 @@
-.tab-menu {
+tab-menu:first-of-type {
   display: flex;
   min-height: 250px;
+}
+
+tab-menu {
+  display: none;
 }
 
 .tab-menu--link[aria-selected="true"] {
@@ -27,6 +31,8 @@
   display: block;
   width: 150px;
   color: var(--color-base-text, 0.75);
+  background-color: rgb(235, 232, 232);
+  padding-left: 10px;
 }
 
 .tab-menu--content:not(.visible) {

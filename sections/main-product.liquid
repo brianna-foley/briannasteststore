@@ -518,15 +518,16 @@
               {% render 'icon-with-text',
                 block: block
               %}
+            {%- when 'tab' -%}
+              {{ 'tab-menu.css' | asset_url | stylesheet_tag }}
+              {% render 'tab-menu', section: section %}
+              <script src="{{ 'tab-menu.js' | asset_url }}" defer="defer"></script>
           {%- endcase -%}
         {%- endfor -%}
         <a href="{{ product.url }}" class="link product__view-details animate-arrow">
           {{ 'products.product.view_full_details' | t }}
           {% render 'icon-arrow' %}
         </a>
-        {{ 'tab-menu.css' | asset_url | stylesheet_tag }}
-        {% render 'tab-menu' %}
-        <script src="{{ 'tab-menu.js' | asset_url }}" defer="defer"></script>
       </product-info>
     </div>
     {%- if section.settings.media_position == 'right' -%}
