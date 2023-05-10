@@ -524,6 +524,9 @@
           {{ 'products.product.view_full_details' | t }}
           {% render 'icon-arrow' %}
         </a>
+        {{ 'tab-menu.css' | asset_url | stylesheet_tag }}
+        {% render 'tab-menu' %}
+        <script src="{{ 'tab-menu.js' | asset_url }}" defer="defer"></script>
       </product-info>
     </div>
     {%- if section.settings.media_position == 'right' -%}
@@ -1081,6 +1084,23 @@
           "type": "page",
           "id": "page",
           "label": "t:sections.main-product.blocks.collapsible_tab.settings.page.label"
+        }
+      ]
+    },
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Tab Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
         }
       ]
     },
