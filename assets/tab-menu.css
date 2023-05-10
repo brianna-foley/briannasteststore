@@ -1,0 +1,116 @@
+.tab-menu {
+  display: flex;
+  min-height: 250px;
+}
+
+.tab-menu--link[aria-selected="true"] {
+  font-weight: 500;
+  color: black;
+  border-bottom: 2px solid black;
+}
+
+.tab-menu--link:focus-visible {
+  background-color: royalblue;
+  color: whitesmoke;
+  outline: 0.2em solid transparent;
+}
+
+.tab-menu--content:focus-visible {
+  background-color: royalblue;
+  color: whitesmoke;
+  outline: 0.2em solid transparent;
+}
+
+.tab-menu--link {
+  text-decoration: none;
+  margin: 0;
+  display: block;
+  width: 150px;
+  color: var(--color-base-text, 0.75);
+}
+
+.tab-menu--content:not(.visible) {
+  display: none;
+}
+
+.tab-menu--list-item {
+  margin: 0 0 5px 0;
+  padding: 0 5px;
+}
+
+.tab-menu--list{
+  list-style: none;
+  padding-inline-start: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.tab-menu--content {
+  width: 200px;
+  padding: 0 15px;
+  background-color: rgb(235, 232, 232);
+  color: black;
+  box-shadow: 2px 2px 2px rgb(213, 213, 213);
+  border-radius: 1px;
+}
+
+.tab-menu--content ul {
+  padding-inline-start: 10px;
+}
+
+@media only screen and (min-width: 500px) and (max-width: 749px) {
+  .tab-menu {
+    flex-direction: column;
+  }
+  .tab-menu--link {
+    float: left;
+    width: 100px;
+    text-align: center;
+    background: gray;
+    color: white;
+    height: 60px;
+    border-radius: 5px 5px 0 0;
+    line-height: 20px;
+    padding-top: 10px;
+  }
+  .tab-menu--link[aria-selected="true"] {
+    background: rgb(235, 232, 232);
+    color: black;
+    font-weight: normal;
+    border-bottom: none;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+  }
+  .tab-menu--content {
+    width: 100%;
+  }
+  .tab-menu--list-item {
+    margin: 0;
+    padding: 0;
+  }
+  
+}
+
+@media only screen and (min-width: 750px) {
+  .tab-menu--link {
+    width: 100px;
+  }
+}
+
+@media only screen and (min-width: 850px) {
+  .tab-menu--link {
+    width: 150px;
+  }
+}
+
+@media only screen and (min-width: 990px) {
+  .tab-menu--link {
+    width: 100px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .tab-menu--link {
+    width: 150px;
+  }
+}
