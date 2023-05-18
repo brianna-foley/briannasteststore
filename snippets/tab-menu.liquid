@@ -1,7 +1,6 @@
 {% assign tabs = section.blocks | where: "type", "tab" %}
 {% if tabs.size > 0 %}
   <tab-menu class="tab-menu">
-    {% comment %} add aria-orientation? vertical or horizontal {% endcomment %}
     <ul
       role="tablist"
       class="tab-menu--list"
@@ -28,7 +27,29 @@
         aria-labelledby="Tab-{{ block.id }}"
         id="Panel-{{ block.id }}"
         tabindex="0"
-        data-tm-content>{{ block.settings.content }}</section>
+        data-tm-content>
+        {{ block.settings.content }}
+        {% if block.settings.full_ingredients_content != empty %}
+            <div class="btn-open-container--ingredients-modal">
+              <button
+                href="#"
+                class="btn-open--ingredients-modal"
+                data-ingredients-modal-open-button>Full Ingredients</button>
+            </div>
+            <section
+              class="modal-main-container--ingredients-modal hidden"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="title--ingredients-modal"
+              data-ingredients-modal>
+              <div class="modal-top--ingredients-modal">
+                <button class="btn-close--ingredients-modal" data-ingredients-modal-close-button>x</button>
+                {{ block.settings.full_ingredients_content }}
+              </div>
+            </section>
+            <div class="overlay--ingredients-modal hidden" data-ingredients-modal-overlay>.</div>
+        {% endif %}
+      </section>
     {% endfor %}
 
   </tab-menu>
